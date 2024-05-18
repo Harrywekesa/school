@@ -1,4 +1,4 @@
-/* Basic styles for layout and navigation */
+/* General styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -10,6 +10,11 @@ header {
     color: white;
     padding: 15px 0;
     text-align: center;
+    position: relative;
+}
+
+header h1 {
+    margin: 0;
 }
 
 nav {
@@ -24,6 +29,9 @@ nav {
     font-size: 1.5em;
     cursor: pointer;
     color: white;
+    position: absolute;
+    top: 15px;
+    right: 20px;
 }
 
 #nav-menu {
@@ -83,34 +91,64 @@ footer {
     bottom: 0;
 }
 
+.hidden {
+    display: none;
+}
+
 /* Mobile-first styles */
-#nav-menu {
-    display: none;
-    text-align: left;
+@media (max-width: 767px) {
+    #menu-toggle {
+        display: block;
+    }
+
+    #nav-menu {
+        display: none;
+        text-align: left;
+    }
+
+    #nav-menu.active {
+        display: block;
+    }
+
+    #nav-menu > li {
+        display: block;
+    }
+
+    #nav-menu > li > a {
+        padding: 10px;
+        border-bottom: 1px solid #45a049;
+    }
+
+    .submenu {
+        position: static;
+    }
+
+    #nav-menu li:hover .submenu {
+        display: none;
+    }
+
+    #nav-menu li:focus-within .submenu,
+    #nav-menu li:active .submenu {
+        display: block;
+    }
+
+    /* Make forms responsive */
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    form label,
+    form input,
+    form select,
+    form button,
+    form textarea {
+        width: 100%;
+        margin-bottom: 10px;
+    }
 }
 
-#nav-menu > li {
-    display: block;
-}
-
-#nav-menu > li > a {
-    padding: 10px;
-    border-bottom: 1px solid #45a049;
-}
-
-.submenu {
-    position: static;
-}
-
-#nav-menu li:hover .submenu {
-    display: none;
-}
-
-#nav-menu li:focus-within .submenu,
-#nav-menu li:active .submenu {
-    display: block;
-}
-
+/* Desktop styles */
 @media (min-width: 768px) {
     #menu-toggle {
         display: none;
@@ -134,17 +172,11 @@ footer {
     }
 }
 
-@media (max-width: 767px) {
-    #menu-toggle {
-        display: block;
-    }
+/* Additional responsive styles for tables and sections */
+.table-wrapper {
+    overflow-x: auto;
+}
 
-    #nav-menu {
-        display: none;
-        text-align: left;
-    }
-
-    #nav-menu.active {
-        display: block;
-    }
+section {
+    margin-bottom: 20px;
 }
