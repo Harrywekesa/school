@@ -1,0 +1,150 @@
+/* Basic styles for layout and navigation */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+}
+
+nav {
+    margin: 20px 0;
+    text-align: center;
+}
+
+#menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: white;
+}
+
+#nav-menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#nav-menu > li {
+    display: inline-block;
+    position: relative;
+}
+
+#nav-menu > li > a {
+    color: white;
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+#nav-menu > li > a:hover,
+#nav-menu > li:hover > a {
+    background-color: #45a049;
+}
+
+.submenu {
+    display: none;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    background-color: #4CAF50;
+    top: 100%;
+    left: 0;
+}
+
+.submenu li a {
+    padding: 10px 20px;
+    white-space: nowrap;
+}
+
+#nav-menu li:hover .submenu {
+    display: block;
+}
+
+main {
+    padding: 20px;
+}
+
+footer {
+    background-color: #f1f1f1;
+    color: #333;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+/* Mobile-first styles */
+#nav-menu {
+    display: none;
+    text-align: left;
+}
+
+#nav-menu > li {
+    display: block;
+}
+
+#nav-menu > li > a {
+    padding: 10px;
+    border-bottom: 1px solid #45a049;
+}
+
+.submenu {
+    position: static;
+}
+
+#nav-menu li:hover .submenu {
+    display: none;
+}
+
+#nav-menu li:focus-within .submenu,
+#nav-menu li:active .submenu {
+    display: block;
+}
+
+@media (min-width: 768px) {
+    #menu-toggle {
+        display: none;
+    }
+
+    #nav-menu {
+        display: block;
+    }
+
+    #nav-menu > li {
+        display: inline-block;
+    }
+
+    .submenu {
+        display: none;
+        position: absolute;
+    }
+
+    #nav-menu li:hover .submenu {
+        display: block;
+    }
+}
+
+@media (max-width: 767px) {
+    #menu-toggle {
+        display: block;
+    }
+
+    #nav-menu {
+        display: none;
+        text-align: left;
+    }
+
+    #nav-menu.active {
+        display: block;
+    }
+}
