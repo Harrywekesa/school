@@ -81,6 +81,44 @@ main {
     padding: 20px;
 }
 
+section {
+    margin-bottom: 20px;
+}
+
+.form-row {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="file"],
+select,
+textarea,
+button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.green-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.green-button:hover {
+    background-color: #45a049;
+}
+
 footer {
     background-color: #f1f1f1;
     color: #333;
@@ -177,6 +215,27 @@ footer {
     overflow-x: auto;
 }
 
-section {
-    margin-bottom: 20px;
+/* Statistics page styles */
+.statistics-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.stat-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 300px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.stat-item h3 {
+    margin-top: 0;
+}
+
+.hidden {
+    display: none;
 }

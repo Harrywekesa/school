@@ -36,6 +36,7 @@
                 <li>
                     <a href="#">Finance</a>
                     <ul class="submenu">
+                        <li><a href="receive_fees.php">Receive Fee</a></li>
                         <li><a href="fee_status.html">Student Fee Status</a></li>
                         <li><a href="fees_setup.html">Fees Setup</a></li>
                         <li><a href="finance_reports.html">Reports</a></li>
@@ -57,6 +58,45 @@
         <section>
             <h2>Welcome, Admin</h2>
             <p>Use the menu to manage the system.</p>
+        </section>
+        <section>
+            <h2>Announcements</h2>
+            <ul id="announcements-list">
+                <!-- Announcements will be dynamically loaded here -->
+            </ul>
+        </section>
+        <section>
+            <h2>Upcoming Events</h2>
+            <ul id="events-list">
+                <!-- Events will be dynamically loaded here -->
+            </ul>
+        </section>
+        <section>
+            <h2>Staff</h2>
+            <ul id="staff-list">
+                <!-- Staff details will be dynamically loaded here -->
+            </ul>
+        </section>
+        <section>
+            <h2>Feedback</h2>
+            <form id="feedback-form" action="feedback.php" method="post">
+                <div class="form-row">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-row">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-row">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="green-button">Submit</button>
+            </form>
+            <div id="feedback-success" class="hidden">
+                <p>Feedback successfully submitted!</p>
+            </div>
         </section>
     </main>
     <footer>

@@ -1,8 +1,5 @@
 <?php
-$servername = "localhost";
-$username = "root"; // Replace with your MySQL username
-$password = "toor"; // Replace with your MySQL password
-$dbname = "primary_school";
+include 'db.php';
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Reports - Primary School</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="script/script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Generate Reports - Primary School</h1>
+        <nav>
+            <button id="menu-toggle" aria-label="Toggle menu">☰</button>
+            <ul id="nav-menu">
+                <li><a href="admin_dashboard.html">Home</a></li>
+                <li><a href="student_admission.html">Student Admission</a></li>
+                <li><a href="fee_setup.html">Setup Fees</a></li>
+                <li><a href="fee_status.html">Fee Status</a></li>
+                <li><a href="generate_reports.html">Generate Reports</a></li>
+                <li><a href="logout.php">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Generate Reports</h2>
+            <form id="report-form">
+                <label for="report-type">Select Report Type:</label>
+                <select id="report-type" name="type">
+                    <option value="school">Entire School</option>
+                    <option value="class">Specific Class</option>
+                    <option value="student">Individual Student</option>
+                </select>
+
+                <div id="class-selection" class="hidden">
+                    <label for="class">Select Class:</label>
+                    <select id="class" name="class">
+                        <!-- Populate this dynamically with class options -->
+                    </select>
+                </div>
+
+                <div id="student-selection" class="hidden">
+                    <label for="student_id">Enter Admission Number:</label>
+                    <input type="text" id="student_id" name="student_id">
+                </div>
+
+                <button type="submit">Generate Report</button>
+            </form>
+
+            <section id="report-results" class="hidden">
+                <h2>Report Results</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Admission Number</th>
+                            <th>First Name</th>
+                            <th>Middle Name</th>
+                            <th>Last Name</th>
+                            <th>Class</th>
+                            <th>Age</th>
+                            <th>Gender</th>
+                            <th>Emergency Contact</th>
+                            <th>Admission Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="report-table-body">
+                        <!-- Report data will be dynamically loaded here -->
+                    </tbody>
+                </table>
+            </section>
+        </section>
+    </main>
+    <footer>
+        <p>Contact us: info@primaryschool.com | +1 234 567 890</p>
+    </footer>
+</body>
+</html>

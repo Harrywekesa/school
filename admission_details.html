@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission Details</title>
+    <style>
+        /* Add some basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Admission Details</h1>
+    <div id="admission-details">
+        <p><strong>Admission Number:</strong> <span id="admission-number"></span></p>
+        <p><strong>First Name:</strong> <span id="first-name"></span></p>
+        <p><strong>Middle Name:</strong> <span id="middle-name"></span></p>
+        <p><strong>Last Name:</strong> <span id="last-name"></span></p>
+        <p><strong>Birth Certificate Number:</strong> <span id="birth-certificate-number"></span></p>
+        <p><strong>Gender:</strong> <span id="gender"></span></p>
+        <p><strong>Class Admitted:</strong> <span id="class-admitted"></span></p>
+        <p><strong>Emergency Contact Name:</strong> <span id="emergency-contact-name"></span></p>
+        <p><strong>Emergency Contact Phone:</strong> <span id="emergency-contact-phone"></span></p>
+        <p><strong>Emergency Contact Email:</strong> <span id="emergency-contact-email"></span></p>
+        <p><strong>Age:</strong> <span id="age"></span></p>
+        <p><strong>Admission Date:</strong> <span id="admission-date"></span></p>
+        <p><strong>Admitted By:</strong> <span id="admitted-by"></span></p>
+        <p><strong>Student Photo:</strong> <img id="student-photo" src="" alt="Student Photo" width="100"></p>
+    </div>
+    <button id="print-button">Print Details</button>
+    <button id="back-button">Back to Admission Page</button>
+
+    <script>
+        // Function to get URL parameters
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Populate the admission details
+        document.getElementById('admission-number').textContent = getUrlParameter('admission_number');
+        document.getElementById('first-name').textContent = getUrlParameter('first_name');
+        document.getElementById('middle-name').textContent = getUrlParameter('middle_name');
+        document.getElementById('last-name').textContent = getUrlParameter('last_name');
+        document.getElementById('birth-certificate-number').textContent = getUrlParameter('birth_certificate_number');
+        document.getElementById('gender').textContent = getUrlParameter('gender');
+        document.getElementById('class-admitted').textContent = getUrlParameter('class_admitted');
+        document.getElementById('emergency-contact-name').textContent = getUrlParameter('emergency_contact_name');
+        document.getElementById('emergency-contact-phone').textContent = getUrlParameter('emergency_contact_phone');
+        document.getElementById('emergency-contact-email').textContent = getUrlParameter('emergency_contact_email');
+        document.getElementById('age').textContent = getUrlParameter('age');
+        document.getElementById('admission-date').textContent = getUrlParameter('admission_date');
+        document.getElementById('admitted-by').textContent = getUrlParameter('admitted_by');
+        document.getElementById('student-photo').src = 'uploads/' + getUrlParameter('student_photo');
+
+        // Print the admission details
+        document.getElementById('print-button').addEventListener('click', () => {
+            window.print();
+        });
+
+        // Go back to the admission form page
+        document.getElementById('back-button').addEventListener('click', () => {
+            window.location.href = 'student_admission.html';
+        });
+    </script>
+</body>
+</html>
