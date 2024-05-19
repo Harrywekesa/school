@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fee Status - Primary School</title>
     <link rel="stylesheet" href="css/styles.css">
-    <script src="js/script.js" defer></script>
+    <script src="script/script.js" defer></script>
 </head>
 <body>
     <header>
@@ -31,8 +31,9 @@
                         <th>Admission Number</th>
                         <th>Student Name</th>
                         <th>Class</th>
-                        <th>Fee Amount</th>
-                        <th>Status</th>
+                        <th>Total Fee Payable</th>
+                        <th>Fee Paid</th>
+                        <th>Fee Balance</th>
                     </tr>
                 </thead>
                 <tbody id="fee-status-table-body">
@@ -44,26 +45,5 @@
     <footer>
         <p>Contact us: info@primaryschool.com | +1 234 567 890</p>
     </footer>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            fetch('fee_status.php')
-                .then(response => response.json())
-                .then(data => {
-                    const tableBody = document.getElementById('fee-status-table-body');
-                    data.forEach(row => {
-                        const tr = document.createElement('tr');
-                        tr.innerHTML = `
-                            <td>${row.student_id}</td>
-                            <td>${row.first_name} ${row.middle_name} ${row.last_name}</td>
-                            <td>${row.class_admitted}</td>
-                            <td>${row.fee_amount}</td>
-                            <td>${row.status}</td>
-                        `;
-                        tableBody.appendChild(tr);
-                    });
-                })
-                .catch(error => console.error('Error:', error));
-        });
-    </script>
 </body>
 </html>

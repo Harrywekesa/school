@@ -1,20 +1,24 @@
 <?php
 include 'db.php'; // Include the database connection file
 
-// Ensure that the JOINs and field names match the database schema correctly
-$sql = "SELECT s.first_name, s.middle_name, s.last_name, s.class_admitted, f.fee_amount, fs.status 
-        FROM students s
-        JOIN fees f ON s.class_admitted = f.class
-        LEFT JOIN fee_status fs ON s.student_id = fs.student_id";
-$result = $conn->query($sql);
+try {
+    // Ensure that the JOINs and field names match the database schema correctly
+    $sql = "SELECT s.student_id, s.first_name, s.middle_name, s.last_name, s.class_admitted, 
+                   f.fee_amount AS total_fee_payable, 
+                   COALESCE(SUM(p.amount_paid), 0) AS fee_paid, 
+                   (f.fee_amount - COALESCE(SUM(p.amount_paid), 0)) AS fee_balance
+            FROM students s
+            JOIN fees f ON s.class_admitted = f.class
+            LEFT JOIN payments p ON s.student_id = p.student_id
+            GROUP BY s.student_id, s.first_name, s.middle_name, s.last_name, s.class_admitted, f.fee_amount";
 
-$fee_status_data = [];
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
 
-if ($result) {
-    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-        $fee_status_data[] = $row;
-    }
+    $fee_status_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    echo json_encode($fee_status_data);
+} catch (PDOException $e) {
+    echo "Query failed: " . $e->getMessage();
 }
-
-echo json_encode($fee_status_data);
 ?>
