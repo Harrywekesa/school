@@ -117,7 +117,7 @@ if (isset($_POST['admission_number'])) {
     <main>
         <section>
             <h2>Receive and Receipt Fees</h2>
-            <form id="receive-fees-form" action="receive_fees.php" method="post">
+                <form id="receive-fees-form" action="receive_fees.php" method="post">
                 <div class="form-row">
                     <label for="admission_number">Admission Number:</label>
                     <input type="text" id="admission_number" name="admission_number" required>
