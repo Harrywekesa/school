@@ -71,9 +71,18 @@ nav {
 .submenu li a {
     padding: 10px 20px;
     white-space: nowrap;
+    color: white;
+    text-decoration: none;
+    display: block;
 }
 
-#nav-menu li:hover .submenu {
+.submenu li a:hover,
+.submenu li a:focus {
+    background-color: #45a049;
+}
+
+#nav-menu li:hover .submenu,
+#nav-menu li:focus-within .submenu {
     display: block;
 }
 

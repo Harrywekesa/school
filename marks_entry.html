@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marks Entry - Primary School</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/marks_entry.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Marks Entry - Primary School</h1>
+        <nav>
+            <button id="menu-toggle" aria-label="Toggle menu">☰</button>
+            <ul id="nav-menu">
+                <li><a href="admin_dashboard.html">Home</a></li>
+                <li><a href="student_admission.html">Student Admission</a></li>
+                <li><a href="fee_setup.html">Setup Fees</a></li>
+                <li><a href="fee_status.html">Fee Status</a></li>
+                <li><a href="finance_reports.html">Finance Reports</a></li>
+                <li><a href="session_reporting.html">Session Reporting</a></li>
+                <li><a href="marks_entry.html">Marks Entry</a></li>
+                <li><a href="academic_results.html">Academic Results</a></li>
+                <li><a href="logout.php">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Enter Marks</h2>
+            <form id="marks-form">
+                <label for="year">Year:</label>
+                <input type="number" id="year" name="year" required>
+                <label for="term">Term:</label>
+                <select id="term" name="term" required>
+                    <option value="1">Term 1</option>
+                    <option value="2">Term 2</option>
+                    <option value="3">Term 3</option>
+                </select>
+                <label for="class">Class:</label>
+                <select id="class" name="class" required>
+                    <option value="Grade 1">Grade 1</option>
+                    <option value="Grade 2">Grade 2</option>
+                    <option value="Grade 3">Grade 3</option>
+                </select>
+                <label for="student-id">Student ID:</label>
+                <input type="text" id="student-id" name="student_id" required>
+                <label for="marks">Marks:</label>
+                <input type="number" id="marks" name="marks" required>
+                <button type="submit">Submit Marks</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>Contact us: info@primaryschool.com | +1 234 567 890</p>
+    </footer>
+</body>
+</html>
