@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Log File - Primary School</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/system_log_file.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>System Log File - Primary School</h1>
+        <nav>
+            <button id="menu-toggle" aria-label="Toggle menu">☰</button>
+            <ul id="nav-menu">
+                <li><a href="admin_dashboard.html">Home</a></li>
+                <li><a href="system_log_file.html">System Log File</a></li>
+                <li><a href="logout.php">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>System Log File</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Activity</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody id="log-file-table-body">
+                    <!-- Log file data will be dynamically loaded here -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <footer>
+        <p>Contact us: info@primaryschool.com | +1 234 567 890</p>
+    </footer>
+</body>
+</html>

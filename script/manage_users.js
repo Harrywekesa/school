@@ -1,28 +1,48 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Fetch existing users and display them
-    fetchUsers();
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
 
-    function fetchUsers() {
-        // Make AJAX request to fetch users
-        fetch('fetch_users.php')
-            .then(response => response.json())
-            .then(users => {
-                // Update HTML with fetched user data
-                const userList = document.getElementById('user-list');
-                userList.innerHTML = '';
+    menuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+    });
 
-                users.forEach(user => {
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td>${user.username}</td>
-                        <td>${user.email}</td>
-                        <td>${user.role}</td>
-                        <td>${user.email_verified}</td>
-                        <td>Actions</td>
-                    `;
-                    userList.appendChild(row);
-                });
-            })
-            .catch(error => console.error('Error fetching users:', error));
-    }
+    // Load users
+    fetch('get_users.php')
+        .then(response => response.json())
+        .then(data => {
+            const tableBody = document.getElementById('users-table-body');
+            data.forEach(user => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${user.username}</td>
+                    <td>${user.email}</td>
+                    <td>${user.status}</td>
+                    <td>
+                        <button onclick="toggleUserStatus(${user.id}, '${user.status}')">${user.status === 'active' ? 'Deactivate' : 'Activate'}</button>
+                    </td>
+                `;
+                tableBody.appendChild(tr);
+            });
+        })
+        .catch(error => console.error('Error:', error));
 });
+
+function toggleUserStatus(userId, currentStatus) {
+    const newStatus = currentStatus === 'active' ? 'inactive' : 'active';
+    fetch('update_user_status.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ id: userId, status: newStatus })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            location.reload(); // Reload the page to reflect changes
+        } else {
+            alert('Error updating user status.');
+        }
+    })
+    .catch(error => console.error('Error:', error));
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Year Setup - Primary School</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/academic_year_setup.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Academic Year Setup - Primary School</h1>
+        <nav>
+            <button id="menu-toggle" aria-label="Toggle menu">☰</button>
+            <ul id="nav-menu">
+                <li><a href="admin_dashboard.html">Home</a></li>
+                <li><a href="academic_year_setup.html">Academic Year Setup</a></li>
+                <li><a href="logout.php">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Academic Year Setup</h2>
+            <form id="year-setup-form">
+                <div class="form-row">
+                    <label for="year">Year:</label>
+                    <input type="number" id="year" name="year" required>
+                </div>
+                <div class="form-row">
+                    <label for="start_date">Start Date:</label>
+                    <input type="date" id="start_date" name="start_date" required>
+                </div>
+                <div class="form-row">
+                    <label for="end_date">End Date:</label>
+                    <input type="date" id="end_date" name="end_date" required>
+                </div>
+                <button type="submit" class="green-button">Create Academic Year</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>Contact us: info@primaryschool.com | +1 234 567 890</p>
+    </footer>
+</body>
+</html>

@@ -3,11 +3,13 @@ include 'db.php';
 require 'PHPMailer/src/PHPMailer.php'; // Include the PHPMailer class file
 require 'PHPMailer/src/SMTP.php'; // Include the SMTP class file
 
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
-
+use PHPMailer\PHPMailer\Exception;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
+    $email = $_POST['email'];
     $password = $_POST['password'];
     $role = $_POST['role'];
 
@@ -25,9 +27,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
     // Insert the new user into the database
-    $insertStatement = $conn->prepare("INSERT INTO users (username, password, role) VALUES (:username, :password, :role)");
+    $insertStatement = $conn->prepare("INSERT INTO users (username, password, email , role) VALUES (:username, :password, :email, :role)");
     $insertStatement->bindParam(':username', $username);
     $insertStatement->bindParam(':password', $hashedPassword);
+    $insertStatement->bindParam(':email', $email);
     $insertStatement->bindParam(':role', $role);
 
     if ($insertStatement->execute()) {
@@ -36,13 +39,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Sending email notification
         $mail = new PHPMailer(); // Create a new PHPMailer instance
         $mail->isSMTP(); // Set mailer to use SMTP
-        $mail->Host = 'smtp.example.com'; // Specify main and backup SMTP servers
+        $mail->Host = 'smtp.gmail.com'; // Specify main and backup SMTP servers
         $mail->SMTPAuth = true; // Enable SMTP authentication
-        $mail->Username = 'your-email@example.com'; // SMTP username
-        $mail->Password = 'your-password'; // SMTP password
+        $mail->Username = 'harrisonwekesa09@gmail.com'; // SMTP username
+        $mail->Password = '#@#Harrisonwekesa09@gmail.com'; // SMTP password
         $mail->SMTPSecure = 'tls'; // Enable TLS encryption, `ssl` also accepted
         $mail->Port = 587; // TCP port to connect to
-        $mail->setFrom('your-email@example.com', 'Your Name'); // Set email format: from (email, name)
+        $mail->setFrom('harrisonwekesa09@gmail.com', 'Harrison Wekesa'); // Set email format: from (email, name)
         $mail->addAddress($username); // Add a recipient
         $mail->isHTML(true); // Set email format to HTML
         $mail->Subject = 'Registration Confirmation'; // Email subject
